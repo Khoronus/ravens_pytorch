@@ -28,9 +28,6 @@ import torch.nn.functional as F
 import cv2
 from torchinfo import summary
 
-from ravens.models.my_pytorch_model2.model import ModelKernel
-from ravens.models.my_pytorch_model.model import ModelLabel
-
 class Transport:
   """Transport module."""
 
@@ -70,10 +67,6 @@ class Transport:
     # 2 fully convolutional ResNets with 57 layers and 16-stride
     self.model1 = ResNet43_8s(in_shape, self.output_dim).to(self.device)
     self.model2 = ResNet43_8s(kernel_shape, self.kernel_dim).to(self.device)
-    #self.model1 = ModelLabel()
-    #self.model2 = ModelKernel()
-    #self.optim = torch.optim.Adam(list(self.model1.parameters()) + list(self.model2.parameters()), lr=1e-4)
-
     self.optim = torch.optim.Adam([
                 {'params': self.model1.parameters()},
                 {'params': self.model2.parameters()}

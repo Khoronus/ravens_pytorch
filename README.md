@@ -8,6 +8,33 @@ PS: Any help or comment for fixing bugs/issues is more than welcome!<br>
 
 ## All credit goes to the original authors.
 
+How to use:<br>
+python3 -m venv ~/workspace/venvs/envraven<br>
+source ~/workspace/venvs/envraven/bin/activate<br>
+
+Install pytorch<br>
+https://pytorch.org/<br>
+i.e.<br>
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116<br>
+
+Install requirements<br>
+pip install -r requirements.txt<br>
+
+Tested commands:<br>
+Generate training and testing<br>
+```shell
+python ravens/demos.py --assets_root=./ravens/environments/assets/ --disp=True --task=block-insertion --mode=train --n=10
+python ravens/demos.py --assets_root=./ravens/environments/assets/ --disp=True --task=block-insertion --mode=test --n=100
+python ravens/train.py --task=block-insertion --agent=transporter --n_demos=10
+python ravens/test.py --assets_root=./ravens/environments/assets/ --disp=True --task=block-insertion --agent=transporter --n_demos=10 --n_steps=1000
+```
+
+Expected output while generating training.<br>
+<img src="docs/Generate.jpg"><br>
+Expected output during training.<br>
+<img src="docs/Train.jpg"><br>
+
+
 Below is the original documentation.<br>
 
 Ravens is a collection of simulated tasks in PyBullet for learning vision-based robotic manipulation, with emphasis on pick and place.
